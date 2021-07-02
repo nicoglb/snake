@@ -1,0 +1,73 @@
+@import './jquerycss'; //cuando lo importo es sin _
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    //height: 600px;
+    //background-color: burlywood;
+    background-image: url(./images/stone-texture.jpg);
+    background-size: 50px 50px;
+    background-repeat: all;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: center;
+    //align-items: center;
+
+    main {
+        display: grid;
+        grid-template: 40px 1fr / 1fr 1fr 1fr; //filas / columnas fraccion
+        grid-template-areas:
+            ". score ."
+            ". tablero ."; //fila "columna(. es de anonima o no me importa) columna(nombre) columna"
+        #score {
+            background-color: blue;
+            grid-area: score; //para enviarlo al area definida especificada
+        }
+
+        #container {
+            grid-area: tablero;
+            //margin: 50% 0;
+            //width: 600px;
+            //height: 600px;
+            background-color: white;
+            display: grid; //generan un conteiner flexible que permite modificar los contenidos
+            grid-template: repeat(15, 20px) / repeat(17, 20px);
+            justify-content: center;
+            align-content: center;
+
+            //gap: 5px;
+            .casillero {
+                //background-color: yellowgreen;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+                &:nth-child(odd) {
+                    background-color: greenyellow;
+                    color: blue;
+                }
+                &:nth-child(even) {
+                    background-color: yellowgreen;
+                    color: black;
+                }
+
+                &.headSnake {
+                    background-color: rebeccapurple;
+                }
+
+                &.bodySnake {
+                    background-color: rosybrown;
+                }
+
+                &.food {
+                    //background-color: red;
+                    background-image: url(./images/apple.png);
+                    background-repeat: no-repeat;
+                    background-size: 20px 20px;
+                }
+            }
+        }
+    }
+}

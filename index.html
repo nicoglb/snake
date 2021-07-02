@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Snake</title>
+    <link rel='shortcut icon' href="images/snake-icon.ico">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div id="dialog-form" title="Create new user">
+            <p class="validateTips">All form fields are required.</p>
+
+            <form>
+                <fieldset>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value="Jane Smith"
+                        class="text ui-widget-content ui-corner-all">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" value="jane@smith.com"
+                        class="text ui-widget-content ui-corner-all">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" value="xxxxxxx"
+                        class="text ui-widget-content ui-corner-all">
+
+                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
+
+
+        <div id="users-contain" class="ui-widget">
+            <h1>Existing Users:</h1>
+            <table id="users" class="ui-widget ui-widget-content">
+                <thead>
+                    <tr class="ui-widget-header ">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john.doe@example.com</td>
+                        <td>johndoe1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="create-user">Create new user</button>
+    </header>
+    <!--
+    <div id="container" class="searchBar">
+        <div id="input" class="searchBar input"></div>
+        <div id="boton" class="searchBar"></div>
+    </div>
+    -->
+    <main>
+
+        <label id="score" for="">Score: </label>
+
+        <div id="container" class="container">
+            <!-- div*20.casillero{$@0} -->
+            <div class="casillero">0</div>
+            <div class="casillero">1</div>
+            <div class="casillero">2</div>
+            <div class="casillero">3</div>
+            <div class="casillero">4</div>
+            <div class="casillero">5</div>
+            <div class="casillero">6</div>
+            <div class="casillero">7</div>
+            <div class="casillero">8</div>
+            <div class="casillero">9</div>
+            <div class="casillero">10</div>
+            <div class="casillero">11</div>
+            <div class="casillero">12</div>
+            <div class="casillero">13</div>
+            <div class="casillero">14</div>
+            <div class="casillero">15</div>
+            <div class="casillero">16</div>
+            <div class="casillero">17</div>
+            <div class="casillero">18</div>
+            <div class="casillero">19</div>
+            <div class="casillero">20</div>
+            <div class="casillero">21</div>
+            <div class="casillero">22</div>
+            <div class="casillero">23</div>
+            <div class="casillero">24</div>
+            <div class="casillero">25</div>
+            <div class="casillero">26</div>
+            <div class="casillero">27</div>
+            <div class="casillero">28</div>
+            <div class="casillero">29</div>
+            <div class="casillero">30</div>
+            <div class="casillero">31</div>
+            <div class="casillero">32</div>
+            <div class="casillero">33</div>
+            <div class="casillero">34</div>
+            <div class="casillero">35</div>
+            <div class="casillero">36</div>
+            <div class="casillero">37</div>
+            <div class="casillero">38</div>
+            <div class="casillero">39</div>
+            <div class="casillero">40</div>
+            <div class="casillero">41</div>
+            <div class="casillero">42</div>
+            <div class="casillero">43</div>
+            <div class="casillero">44</div>
+            <div class="casillero">45</div>
+            <div class="casillero">46</div>
+            <div class="casillero">47</div>
+            <div class="casillero">48</div>
+            <div class="casillero">49</div>
+            <div class="casillero">50</div>
+            <div class="casillero">51</div>
+            <div class="casillero">52</div>
+            <div class="casillero">53</div>
+            <div class="casillero">54</div>
+            <div class="casillero">55</div>
+            <div class="casillero">56</div>
+            <div class="casillero">57</div>
+            <div class="casillero">58</div>
+            <div class="casillero">59</div>
+            <div class="casillero">60</div>
+            <div class="casillero">61</div>
+            <div class="casillero">62</div>
+            <div class="casillero">63</div>
+            <div class="casillero">64</div>
+            <div class="casillero">65</div>
+            <div class="casillero">66</div>
+            <div class="casillero">67</div>
+            <div class="casillero">68</div>
+            <div class="casillero">69</div>
+            <div class="casillero">70</div>
+            <div class="casillero">71</div>
+            <div class="casillero">72</div>
+            <div class="casillero">73</div>
+            <div class="casillero">74</div>
+            <div class="casillero">75</div>
+            <div class="casillero">76</div>
+            <div class="casillero">77</div>
+            <div class="casillero">78</div>
+            <div class="casillero">79</div>
+            <div class="casillero">80</div>
+            <div class="casillero">81</div>
+            <div class="casillero">82</div>
+            <div class="casillero">83</div>
+            <div class="casillero">84</div>
+            <div class="casillero">85</div>
+            <div class="casillero">86</div>
+            <div class="casillero">87</div>
+            <div class="casillero">88</div>
+            <div class="casillero">89</div>
+            <div class="casillero">90</div>
+            <div class="casillero">91</div>
+            <div class="casillero">92</div>
+            <div class="casillero">93</div>
+            <div class="casillero">94</div>
+            <div class="casillero">95</div>
+            <div class="casillero">96</div>
+            <div class="casillero">97</div>
+            <div class="casillero">98</div>
+            <div class="casillero">99</div>
+            <div class="casillero">100</div>
+            <div class="casillero">101</div>
+            <div class="casillero">102</div>
+            <div class="casillero">103</div>
+            <div class="casillero">104</div>
+            <div class="casillero">105</div>
+            <div class="casillero">106</div>
+            <div class="casillero">107</div>
+            <div class="casillero">108</div>
+            <div class="casillero">109</div>
+            <div class="casillero">110</div>
+            <div class="casillero">111</div>
+            <div class="casillero">112</div>
+            <div class="casillero">113</div>
+            <div class="casillero">114</div>
+            <div class="casillero">115</div>
+            <div class="casillero">116</div>
+            <div class="casillero">117</div>
+            <div class="casillero">118</div>
+            <div class="casillero">119</div>
+            <div class="casillero">120</div>
+            <div class="casillero">121</div>
+            <div class="casillero">122</div>
+            <div class="casillero">123</div>
+            <div class="casillero">124</div>
+            <div class="casillero">125</div>
+            <div class="casillero">126</div>
+            <div class="casillero">127</div>
+            <div class="casillero">128</div>
+            <div class="casillero">129</div>
+            <div class="casillero">130</div>
+            <div class="casillero">131</div>
+            <div class="casillero">132</div>
+            <div class="casillero">133</div>
+            <div class="casillero">134</div>
+            <div class="casillero">135</div>
+            <div class="casillero">136</div>
+            <div class="casillero">137</div>
+            <div class="casillero">138</div>
+            <div class="casillero">139</div>
+            <div class="casillero">140</div>
+            <div class="casillero">141</div>
+            <div class="casillero">142</div>
+            <div class="casillero">143</div>
+            <div class="casillero">144</div>
+            <div class="casillero">145</div>
+            <div class="casillero">146</div>
+            <div class="casillero">147</div>
+            <div class="casillero">148</div>
+            <div class="casillero">149</div>
+            <div class="casillero">150</div>
+            <div class="casillero">151</div>
+            <div class="casillero">152</div>
+            <div class="casillero">153</div>
+            <div class="casillero">154</div>
+            <div class="casillero">155</div>
+            <div class="casillero">156</div>
+            <div class="casillero">157</div>
+            <div class="casillero">158</div>
+            <div class="casillero">159</div>
+            <div class="casillero">160</div>
+            <div class="casillero">161</div>
+            <div class="casillero">162</div>
+            <div class="casillero">163</div>
+            <div class="casillero">164</div>
+            <div class="casillero">165</div>
+            <div class="casillero">166</div>
+            <div class="casillero">167</div>
+            <div class="casillero">168</div>
+            <div class="casillero">169</div>
+            <div class="casillero">170</div>
+            <div class="casillero">171</div>
+            <div class="casillero">172</div>
+            <div class="casillero">173</div>
+            <div class="casillero">174</div>
+            <div class="casillero">175</div>
+            <div class="casillero">176</div>
+            <div class="casillero">177</div>
+            <div class="casillero">178</div>
+            <div class="casillero">179</div>
+            <div class="casillero">180</div>
+            <div class="casillero">181</div>
+            <div class="casillero">182</div>
+            <div class="casillero">183</div>
+            <div class="casillero">184</div>
+            <div class="casillero">185</div>
+            <div class="casillero">186</div>
+            <div class="casillero">187</div>
+            <div class="casillero">188</div>
+            <div class="casillero">189</div>
+            <div class="casillero">190</div>
+            <div class="casillero">191</div>
+            <div class="casillero">192</div>
+            <div class="casillero">193</div>
+            <div class="casillero">194</div>
+            <div class="casillero">195</div>
+            <div class="casillero">196</div>
+            <div class="casillero">197</div>
+            <div class="casillero">198</div>
+            <div class="casillero">199</div>
+            <div class="casillero">200</div>
+            <div class="casillero">201</div>
+            <div class="casillero">202</div>
+            <div class="casillero">203</div>
+            <div class="casillero">204</div>
+            <div class="casillero">205</div>
+            <div class="casillero">206</div>
+            <div class="casillero">207</div>
+            <div class="casillero">208</div>
+            <div class="casillero">209</div>
+            <div class="casillero">210</div>
+            <div class="casillero">211</div>
+            <div class="casillero">212</div>
+            <div class="casillero">213</div>
+            <div class="casillero">214</div>
+            <div class="casillero">215</div>
+            <div class="casillero">216</div>
+            <div class="casillero">217</div>
+            <div class="casillero">218</div>
+            <div class="casillero">219</div>
+            <div class="casillero">220</div>
+            <div class="casillero">221</div>
+            <div class="casillero">222</div>
+            <div class="casillero">223</div>
+            <div class="casillero">224</div>
+            <div class="casillero">225</div>
+            <div class="casillero">226</div>
+            <div class="casillero">227</div>
+            <div class="casillero">228</div>
+            <div class="casillero">229</div>
+            <div class="casillero">230</div>
+            <div class="casillero">231</div>
+            <div class="casillero">232</div>
+            <div class="casillero">233</div>
+            <div class="casillero">234</div>
+            <div class="casillero">235</div>
+            <div class="casillero">236</div>
+            <div class="casillero">237</div>
+            <div class="casillero">238</div>
+            <div class="casillero">239</div>
+            <div class="casillero">240</div>
+            <div class="casillero">241</div>
+            <div class="casillero">242</div>
+            <div class="casillero">243</div>
+            <div class="casillero">244</div>
+            <div class="casillero">245</div>
+            <div class="casillero">246</div>
+            <div class="casillero">247</div>
+            <div class="casillero">248</div>
+            <div class="casillero">249</div>
+            <div class="casillero">250</div>
+            <div class="casillero">251</div>
+            <div class="casillero">252</div>
+            <div class="casillero">253</div>
+            <div class="casillero">254</div>
+        </div>
+
+    </main>
+
+    <script src="./main.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="./jqueryUser.js"></script>
+</body>
+
+</html>
