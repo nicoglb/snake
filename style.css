@@ -1,3 +1,4 @@
+@charset "UTF-8";
 label,
 input {
   display: block;
@@ -45,6 +46,25 @@ div#users-contain table th {
 .validateTips {
   border: 1px solid transparent;
   padding: 0.3em;
+}
+
+.imgUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  margin-top: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.imgUser img {
+  height: 100%;
 }
 
 * {
@@ -119,5 +139,88 @@ body main #container .casillero.food {
   background-image: url(./images/apple.png);
   background-repeat: no-repeat;
   background-size: 20px 20px;
+}
+
+.fondo {
+  background-image: url(./images/imagen_snake_api.jpg);
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 900px;
+  height: 900px;
+  margin: 0 auto;
+  margin-top: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#btnIniciarJuego {
+  position: absolute;
+  margin-top: 30px;
+  background-color: #2316db;
+  color: #f0f7f1;
+  margin-left: 20%;
+  font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+#btnCrearCuenta {
+  position: absolute;
+  margin-top: 30px;
+  background-color: #2316db;
+  color: #f0f7f1;
+  margin-left: .5em;
+  font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+#btnIniciarJuego:hover, #btnCrearCuenta:hover {
+  background-color: #070831;
+}
+
+form {
+  /* Centrar el formulario en la página */
+  margin-top: 310px;
+  width: 290px;
+  height: 190px;
+  /* Esquema del formulario */
+  padding: 1em;
+  border-radius: 1em;
+}
+
+label {
+  /* Tamaño y alineación uniforme */
+  font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+  display: inline-block !important;
+  font-size: large;
+  text-align: left;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+input,
+textarea {
+  /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
+       Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
+  font: 1em sans-serif;
+  /* Tamaño uniforme del campo de texto */
+  width: 300px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* Hacer coincidir los bordes del campo del formulario */
+  border: 1px solid #999;
+}
+
+input:focus,
+textarea:focus {
+  /* Destacado adicional para elementos que tienen el cursor */
+  border-color: #000;
+}
+
+textarea {
+  /* Alinear los campos de texto multilínea con sus etiquetas */
+  vertical-align: top;
+  /* Proporcionar espacio para escribir texto */
+  height: 5em;
 }
 /*# sourceMappingURL=style.css.map */

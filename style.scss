@@ -71,3 +71,89 @@ body {
         }
     }
 }
+
+.fondo {
+    background-image: url(./images/imagen_snake_api.jpg);
+    background-repeat: no-repeat;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 900px;
+    height: 900px;
+    margin: 0 auto;
+    margin-top: 10px;
+   justify-content: center;
+  }
+  
+ 
+#btnIniciarJuego {
+    position: absolute;
+    margin-top: 30px;
+    background-color: rgb(35, 22, 219);
+    color:rgb(240, 247, 241);
+    margin-left: 20%;
+    font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+#btnCrearCuenta {
+    position: absolute;
+    margin-top: 30px;
+    background-color: rgb(35, 22, 219);
+    color:rgb(240, 247, 241);
+    margin-left: .5em;
+    font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+    
+}
+#btnIniciarJuego:hover,#btnCrearCuenta:hover{
+    background-color: rgb(7, 8, 49);
+    
+}
+form {
+    /* Centrar el formulario en la página */
+    margin-top: 310px;
+    width: 290px;
+    height: 190px;
+    /* Esquema del formulario */
+    padding: 1em;
+  //  border: 1px solid #CCC;
+  // background-color: rgb(225, 236, 234);
+    border-radius: 1em;
+  }
+  
+  label {
+    /* Tamaño y alineación uniforme */
+    font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+    display: inline-block !important;
+    //width: 30%;
+    font-size:large;
+    text-align: left;
+    //text-shadow: 0 0 0.2em #8F7
+    color: white; text-shadow: black 0.1em 0.1em 0.2em
+  }input,
+  textarea {
+    /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
+       Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
+    font: 1em sans-serif;
+  
+    /* Tamaño uniforme del campo de texto */
+    width: 300px;
+    box-sizing: border-box;
+  
+    /* Hacer coincidir los bordes del campo del formulario */
+    border: 1px solid #999;
+  }
+  
+  input:focus,
+  textarea:focus {
+    /* Destacado adicional para elementos que tienen el cursor */
+    border-color: #000;
+  }
+  
+  textarea {
+    /* Alinear los campos de texto multilínea con sus etiquetas */
+    vertical-align: top;
+  
+    /* Proporcionar espacio para escribir texto */
+    height: 5em;
+  }
+  
+ 
