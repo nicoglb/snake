@@ -16,7 +16,7 @@ container.children[30].classList.add('food');
 container.children[5].classList.add('headSnake');
 container.children[4].classList.add('bodySnake');
 
-let snake = [5, 4];
+var snake = [5, 4];
 
 //snake[0] headSnake
 //let snake = [2,1, 0];//snake[0] headSnake
@@ -49,7 +49,7 @@ let snake = [5, 4];
 // NaN
 // null
 // Infinity
-
+let comi;
 const mov = (inc) => {
     let remove;
     for (let index = 0; index < snake.length; index++) {
@@ -66,16 +66,21 @@ const mov = (inc) => {
             //avanzo en los casilleros
             container.children[snake[index]].classList.toggle('headSnake');
             
-            
-            eat(snake[0], inc); //si como antes de moverme
+            if (its_me(snake[index]))
+                break;
+            comi = eat(snake[0], inc); //si como antes de moverme
             //index++; //esto si saco el for y el if
         }
         else {
+
+            
             //cuerpo             
             container.children[snake[index]].classList.toggle('bodySnake');
 
-            remove = snake.pop();
-            container.children[remove].classList.toggle('bodySnake');
+            if (!comi){
+                remove = snake.pop();
+                container.children[remove].classList.toggle('bodySnake');
+            }
             
             break;
         }
@@ -86,11 +91,27 @@ const mov = (inc) => {
 
 }
 
-const its_me = () => {
+const reset_game = () => {
+    
+    for (i of snake) {
+        container.children[i].classList.remove('headSnake')
+        container.children[i].classList.remove('bodySnake')
+    }
+}
+
+const its_me = (head) => {
 
     //funcion que se fija si choco conmigo mismo
+    if (container.children[head].classList.contains('bodySnake')){
+        alert("Game Over!");
+        reset_game();
+        container.children[5].classList.add('headSnake');
+        container.children[4].classList.add('bodySnake');
+        snake = [5, 4];
+        return true;
 
-    //alert("Game Over!");
+    }
+
 }
 
 const its_border = () => {
@@ -105,11 +126,12 @@ const eat = (head, inc) => {
     //funcion que come y agrega la cola nueva
     if (container.children[head].classList.contains('food')) {
         container.children[head].classList.toggle('food');
-        snake.push(parseInt(container.children[snake[snake.length - 1]].textContent) - inc);
-        container.children[snake[snake.length - 1]].classList.toggle('bodySnake');
+        //snake.push(parseInt(container.children[snake[snake.length - 1]].textContent) - inc);
+        //container.children[snake[snake.length - 1]].classList.toggle('bodySnake');
         
 
         random_food();
+        return true
 
     }
 }
