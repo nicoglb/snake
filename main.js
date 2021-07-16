@@ -50,6 +50,7 @@ var snake = [5, 4];
 // null
 // Infinity
 let comi;
+let score =0;
 const mov = (inc) => {
     let remove;
     for (let index = 0; index < snake.length; index++) {
@@ -97,6 +98,8 @@ const reset_game = () => {
         container.children[i].classList.remove('headSnake')
         container.children[i].classList.remove('bodySnake')
     }
+    score= 0;
+    document.getElementById('score').innerHTML="Score: "+score;
 }
 
 const its_me = (head) => {
@@ -131,6 +134,7 @@ const eat = (head, inc) => {
         
 
         random_food();
+        add_score();
         return true
 
     }
@@ -149,6 +153,14 @@ const random_food = () => {
 
     container.children[location].classList.toggle('food');
 
+
+}
+
+const add_score =()=>{
+
+    score = score + 10;
+    document.getElementById('score').innerHTML="Score: "+score;
+    console.log('score: '+ score);
 
 }
 

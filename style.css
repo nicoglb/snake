@@ -68,7 +68,7 @@ body main {
 }
 
 body main #score {
-  background-color: blue;
+  background-color: green;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: score;

@@ -23,7 +23,7 @@ body {
             ". score ."
             ". tablero ."; //fila "columna(. es de anonima o no me importa) columna(nombre) columna"
         #score {
-            background-color: blue;
+            background-color: green;
             grid-area: score; //para enviarlo al area definida especificada
         }
 
