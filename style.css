@@ -161,8 +161,9 @@ body main #container .casillero.food {
   margin-top: 30px;
   background-color: #2316db;
   color: #f0f7f1;
+  text-shadow: black 0.1em 0.1em 0.2em;
   margin-left: 20%;
-  font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 
 #btnCrearCuenta {
@@ -170,8 +171,9 @@ body main #container .casillero.food {
   margin-top: 30px;
   background-color: #2316db;
   color: #f0f7f1;
+  text-shadow: black 0.1em 0.1em 0.2em;
   margin-left: .5em;
-  font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 
 #btnIniciarJuego:hover, #btnCrearCuenta:hover {
@@ -190,7 +192,7 @@ body main #container .casillero.food {
 
 label {
   /* Tamaño y alineación uniforme */
-  font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+  font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
   display: inline-block !important;
   font-size: large;
   text-align: left;
@@ -227,6 +229,6 @@ textarea {
 #dialog-form {
   background-color: #169ddb;
   color: #f0f7f1;
-  font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 /*# sourceMappingURL=style.css.map */
