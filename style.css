@@ -178,7 +178,7 @@ body main #container .casillero.food {
   background-color: #070831;
 }
 
-form {
+#div_form {
   /* Centrar el formulario en la página */
   margin-top: 310px;
   width: 290px;
@@ -222,5 +222,11 @@ textarea {
   vertical-align: top;
   /* Proporcionar espacio para escribir texto */
   height: 5em;
+}
+
+#dialog-form {
+  background-color: #169ddb;
+  color: #f0f7f1;
+  font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 /*# sourceMappingURL=style.css.map */

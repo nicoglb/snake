@@ -107,7 +107,7 @@ body {
     background-color: rgb(7, 8, 49);
     
 }
-form {
+#div_form {
     /* Centrar el formulario en la página */
     margin-top: 310px;
     width: 290px;
@@ -154,6 +154,12 @@ form {
   
     /* Proporcionar espacio para escribir texto */
     height: 5em;
+  }
+  #dialog-form {
+
+    background-color: rgb(22, 157, 219);
+    color:rgb(240, 247, 241);
+    font-family: Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
   }
   
  
