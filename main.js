@@ -1,21 +1,13 @@
-console.log('Start');
-
 let container = document.getElementById('container');
-//let searchBar = document.getElementsByClassName('searchBar');
-//searchBar.boton
 let body = document.getElementsByTagName('body')[0];
 
 console.log(container);
 
-
-
 // console.log(container.children[0].style);
 
 container.children[30].classList.add('food');
-
 container.children[5].classList.add('headSnake');
 container.children[4].classList.add('bodySnake');
-
 var snake = [5, 4];
 
 //snake[0] headSnake
@@ -51,6 +43,7 @@ var snake = [5, 4];
 // Infinity
 let comi;
 let score =0;
+
 const mov = (inc) => {
     let remove;
     for (let index = 0; index < snake.length; index++) {
@@ -58,12 +51,9 @@ const mov = (inc) => {
         if (index === 0) {
             //cabeza
             console.log();
-
             container.children[snake[index]].classList.toggle('headSnake');
-            
             //agrego al principio del array la nueva cabeza
             snake.unshift(parseInt(container.children[snake[index]].textContent) + inc);
-
             //avanzo en los casilleros
             container.children[snake[index]].classList.toggle('headSnake');
             
@@ -71,10 +61,9 @@ const mov = (inc) => {
                 break;
             comi = eat(snake[0], inc); //si como antes de moverme
             //index++; //esto si saco el for y el if
+            //console.log("cabeza: "+snake[index])
         }
         else {
-
-            
             //cuerpo             
             container.children[snake[index]].classList.toggle('bodySnake');
 
@@ -85,11 +74,7 @@ const mov = (inc) => {
             
             break;
         }
-        //console.log(snake);
-
-
     }
-
 }
 
 const reset_game = () => {
@@ -98,6 +83,11 @@ const reset_game = () => {
         container.children[i].classList.remove('headSnake')
         container.children[i].classList.remove('bodySnake')
     }
+    //console.log("snake: "+snake);
+
+    container.children[5].classList.add('headSnake');
+    container.children[4].classList.add('bodySnake');
+    snake = [5, 4];
     score= 0;
     document.getElementById('score').innerHTML="Score: "+score;
 }
@@ -106,7 +96,14 @@ const its_me = (head) => {
 
     //funcion que se fija si choco conmigo mismo
     if (container.children[head].classList.contains('bodySnake')){
-        alert("Game Over!");
+        //alert("Game Over!");
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Game Over...',
+            text: 'Tendrás suerte en la próxima!',
+           // footer: '<a href="">Ver mis puntajes</a>'
+          })
         reset_game();
         container.children[5].classList.add('headSnake');
         container.children[4].classList.add('bodySnake');
@@ -132,7 +129,6 @@ const eat = (head, inc) => {
         //snake.push(parseInt(container.children[snake[snake.length - 1]].textContent) - inc);
         //container.children[snake[snake.length - 1]].classList.toggle('bodySnake');
         
-
         random_food();
         add_score();
         return true
@@ -157,14 +153,23 @@ const random_food = () => {
 }
 
 const add_score =()=>{
+    //funcion que acumula el puntaje en 10 cada vez que come
 
     score = score + 10;
     document.getElementById('score').innerHTML="Score: "+score;
-    console.log('score: '+ score);
+   // console.log('score: '+ score);
 
 }
 
-
+const cerrarSesion =()=>{
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Cerrando sesión...',
+        showConfirmButton: false,
+        timer: 2000
+      });
+}
 
 let event_before = 'ArrowRight';
 

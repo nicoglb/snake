@@ -52,6 +52,60 @@ div#users-contain table th {
   margin: 0;
 }
 
+.header {
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+  height: 60px;
+}
+
+.header #logo {
+  width: 55px;
+  height: 50px;
+  padding: 0px 1em 0px;
+}
+
+.header .navi ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #04AA6D;
+}
+
+.header .navi > ul li {
+  float: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .navi ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 1em 1em;
+  text-decoration: none;
+}
+
+.header .navi li a:hover {
+  background-color: darkcyan;
+}
+
+.header #user {
+  color: #140b96;
+  font-style: oblique;
+}
+
+.header .navi li ul {
+  display: none;
+  position: absolute;
+}
+
+.header .navi li:hover > ul {
+  display: block;
+}
+
 body {
   background-image: url(./images/stone-texture.jpg);
   background-size: 50px 50px;
@@ -64,21 +118,15 @@ body main {
   -ms-grid-rows: 40px 1fr;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template: 40px 1fr / 1fr 1fr 1fr;
-      grid-template-areas: ". score ." ". tablero .";
-}
-
-body main #score {
-  background-color: green;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: score;
+      grid-template-areas: ". tablero .";
 }
 
 body main #container {
-  -ms-grid-row: 2;
+  -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: tablero;
-  background-color: white;
+  width: 600px;
+  height: 400px;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: (20px)[15];
@@ -99,20 +147,21 @@ body main #container .casillero {
 
 body main #container .casillero:nth-child(odd) {
   background-color: greenyellow;
-  color: blue;
+  color: transparent;
 }
 
 body main #container .casillero:nth-child(even) {
   background-color: yellowgreen;
-  color: black;
+  color: transparent;
 }
 
 body main #container .casillero.headSnake {
-  background-color: rebeccapurple;
+  background-image: url(./images/head_snake.png);
+  background-size: 20px 20px;
 }
 
 body main #container .casillero.bodySnake {
-  background-color: rosybrown;
+  background-color: #2f2c79;
 }
 
 body main #container .casillero.food {
