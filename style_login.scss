@@ -117,7 +117,7 @@ input {
 input[type='checkbox']{ display:none}
 button {
 
-    background-color: rgb(35, 22, 219) !important;
+    background-color: #04AA6D  !important;
     color:rgb(240, 247, 241)!important;
     text-shadow: black 0.1em 0.1em 0.2em;
     font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
@@ -134,7 +134,7 @@ button {
   // background-color: rgb(225, 236, 234);
     border-radius: 1em;
   }
-  
+ 
   label {
     /* Tamaño y alineación uniforme */
     font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
@@ -143,8 +143,20 @@ button {
     font-size:large;
     text-align: left;
     //text-shadow: 0 0 0.2em #8F7
-    color: white; text-shadow: black 0.1em 0.1em 0.2em
-  }input,
+    color: whitesmoke; text-shadow: black 0.1em 0.1em 0.2em
+  }
+  label[class='label_dialog']{
+
+    font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+    display: inline-block !important;
+    //width: 30%;
+    font-size:large;
+    text-align: left;
+    //text-shadow: 0 0 0.2em #8F7
+    color:#04AA6D !important;
+    text-shadow:#04AA6D 0em 0em 0em ; 
+}
+  input,
   textarea {
     /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
        Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
@@ -173,9 +185,28 @@ button {
   }
   #dialog-form {
 
-    background-color: rgb(22, 157, 219);
+
+    color:rgb(240, 247, 241);
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+     
+}
+.ui-widget{
+
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+    
+}
+  fieldset { 
     color:rgb(240, 247, 241);
     font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
   }
+ div[class='ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle']
+
+ {background-color: rgb(7, 82, 44);
+    color:rgb(240, 247, 241);
+    text-shadow: black 0.1em 0.1em 0.2em;}
  
- 
+.validateTips {
+    color:rgb(7, 82, 44);
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+    
+}
