@@ -1,0 +1,181 @@
+@import './jquerycss'; //cuando lo importo es sin _
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    //height: 600px;
+    //background-color: burlywood;
+    background-image: url(./images/stone-texture.jpg);
+    background-size: 50px 50px;
+    background-repeat: all;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: center;
+    //align-items: center;
+
+    main {
+        display: grid;
+        grid-template: 40px 1fr / 1fr 1fr 1fr; //filas / columnas fraccion
+        grid-template-areas:
+            ". score ."
+            ". tablero ."; //fila "columna(. es de anonima o no me importa) columna(nombre) columna"
+        #score {
+            background-color: blue;
+            grid-area: score; //para enviarlo al area definida especificada
+        }
+
+        #container {
+            grid-area: tablero;
+            //margin: 50% 0;
+            //width: 600px;
+            //height: 600px;
+            background-color: white;
+            display: grid; //generan un conteiner flexible que permite modificar los contenidos
+            grid-template: repeat(15, 20px) / repeat(17, 20px);
+            justify-content: center;
+            align-content: center;
+
+            //gap: 5px;
+            .casillero {
+                //background-color: yellowgreen;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+                &:nth-child(odd) {
+                    background-color: greenyellow;
+                    color: blue;
+                }
+                &:nth-child(even) {
+                    background-color: yellowgreen;
+                    color: black;
+                }
+
+                &.headSnake {
+                    background-color: rebeccapurple;
+                }
+
+                &.bodySnake {
+                    background-color: rosybrown;
+                }
+
+                &.food {
+                    //background-color: red;
+                    background-image: url(./images/apple.png);
+                    background-repeat: no-repeat;
+                    background-size: 20px 20px;
+                }
+            }
+        }
+    }
+}
+
+.fondo {
+    background-image: url(./images/imagen_snake_api.jpg);
+    background-repeat: no-repeat;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 900px;
+    height: 900px;
+    margin: 0 auto;
+    margin-top: 10px;
+   justify-content: center;
+  }
+  
+ 
+#btnIniciarJuego {
+    position: absolute;
+    margin-top: 30px;
+    background-color: rgb(35, 22, 219);
+    color:rgb(240, 247, 241);
+    text-shadow: black 0.1em 0.1em 0.2em;
+    margin-left: 20%;
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+#btnCrearCuenta {
+    position: absolute;
+    margin-top: 30px;
+    background-color: rgb(35, 22, 219);
+    color:rgb(240, 247, 241);
+    text-shadow: black 0.1em 0.1em 0.2em;
+    margin-left: .5em;
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+    
+}
+#btnIniciarJuego:hover,#btnCrearCuenta:hover{
+    background-color: rgb(7, 8, 49);
+    
+}
+
+input {
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+input[type='checkbox']{ display:none}
+button {
+
+    background-color: rgb(35, 22, 219) !important;
+    color:rgb(240, 247, 241)!important;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+   
+}
+#div_form {
+    /* Centrar el formulario en la página */
+    margin-top: 310px;
+    width: 290px;
+    height: 190px;
+    /* Esquema del formulario */
+    padding: 1em;
+  //  border: 1px solid #CCC;
+  // background-color: rgb(225, 236, 234);
+    border-radius: 1em;
+  }
+  
+  label {
+    /* Tamaño y alineación uniforme */
+    font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+    display: inline-block !important;
+    //width: 30%;
+    font-size:large;
+    text-align: left;
+    //text-shadow: 0 0 0.2em #8F7
+    color: white; text-shadow: black 0.1em 0.1em 0.2em
+  }input,
+  textarea {
+    /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
+       Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
+    font: 1em sans-serif;
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+    /* Tamaño uniforme del campo de texto */
+    width: 300px;
+    box-sizing: border-box;
+  
+    /* Hacer coincidir los bordes del campo del formulario */
+    border: 1px solid #999;
+  }
+  
+  input:focus,
+  textarea:focus {
+    /* Destacado adicional para elementos que tienen el cursor */
+    border-color: #000;
+  }
+  
+  textarea {
+    /* Alinear los campos de texto multilínea con sus etiquetas */
+    vertical-align: top;
+  
+    /* Proporcionar espacio para escribir texto */
+    height: 5em;
+  }
+  #dialog-form {
+
+    background-color: rgb(22, 157, 219);
+    color:rgb(240, 247, 241);
+    font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  }
+ 
+ 
