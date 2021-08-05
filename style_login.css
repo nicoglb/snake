@@ -1,0 +1,278 @@
+@charset "UTF-8";
+label,
+input {
+  display: block;
+}
+
+input.text {
+  margin-bottom: 12px;
+  width: 95%;
+  padding: 0.4em;
+}
+
+fieldset {
+  padding: 0;
+  border: 0;
+  margin-top: 25px;
+}
+
+h1 {
+  font-size: 1.2em;
+  margin: 0.6em 0;
+}
+
+div#users-contain {
+  width: 350px;
+  margin: 20px 0;
+}
+
+div#users-contain table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+div#users-contain table td,
+div#users-contain table th {
+  border: 1px solid #eee;
+  padding: 0.6em 10px;
+  text-align: left;
+}
+
+.ui-dialog .ui-state-error {
+  padding: 0.3em;
+}
+
+.validateTips {
+  border: 1px solid transparent;
+  padding: 0.3em;
+}
+
+.imgUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  margin-top: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.imgUser img {
+  height: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url(./images/stone-texture.jpg);
+  background-size: 50px 50px;
+  background-repeat: all;
+}
+
+body main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 40px 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template: 40px 1fr / 1fr 1fr 1fr;
+      grid-template-areas: ". score ." ". tablero .";
+}
+
+body main #score {
+  background-color: blue;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: score;
+}
+
+body main #container {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: tablero;
+  background-color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (20px)[15];
+  -ms-grid-columns: (20px)[17];
+      grid-template: repeat(15, 20px)/repeat(17, 20px);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+body main #container .casillero {
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+}
+
+body main #container .casillero:nth-child(odd) {
+  background-color: greenyellow;
+  color: blue;
+}
+
+body main #container .casillero:nth-child(even) {
+  background-color: yellowgreen;
+  color: black;
+}
+
+body main #container .casillero.headSnake {
+  background-color: rebeccapurple;
+}
+
+body main #container .casillero.bodySnake {
+  background-color: rosybrown;
+}
+
+body main #container .casillero.food {
+  background-image: url(./images/apple.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+.fondo {
+  background-image: url(./images/imagen_snake_api.jpg);
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 900px;
+  height: 900px;
+  margin: 0 auto;
+  margin-top: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#btnIniciarJuego {
+  position: absolute;
+  margin-top: 30px;
+  background-color: #2316db;
+  color: #f0f7f1;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  margin-left: 20%;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+#btnCrearCuenta {
+  position: absolute;
+  margin-top: 30px;
+  background-color: #2316db;
+  color: #f0f7f1;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  margin-left: .5em;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+#btnIniciarJuego:hover, #btnCrearCuenta:hover {
+  background-color: #070831;
+}
+
+input {
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+button {
+  background-color: #04AA6D  !important;
+  color: #f0f7f1 !important;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+#div_form {
+  /* Centrar el formulario en la página */
+  margin-top: 310px;
+  width: 290px;
+  height: 190px;
+  /* Esquema del formulario */
+  padding: 1em;
+  border-radius: 1em;
+}
+
+label {
+  /* Tamaño y alineación uniforme */
+  font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+  display: inline-block !important;
+  font-size: large;
+  text-align: left;
+  color: whitesmoke;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+label[class='label_dialog'] {
+  font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+  display: inline-block !important;
+  font-size: large;
+  text-align: left;
+  color: #04AA6D !important;
+  text-shadow: #04AA6D 0em 0em 0em;
+}
+
+input,
+textarea {
+  /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
+       Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
+  font: 1em sans-serif;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  /* Tamaño uniforme del campo de texto */
+  width: 300px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* Hacer coincidir los bordes del campo del formulario */
+  border: 1px solid #999;
+}
+
+input:focus,
+textarea:focus {
+  /* Destacado adicional para elementos que tienen el cursor */
+  border-color: #000;
+}
+
+textarea {
+  /* Alinear los campos de texto multilínea con sus etiquetas */
+  vertical-align: top;
+  /* Proporcionar espacio para escribir texto */
+  height: 5em;
+}
+
+#dialog-form {
+  color: #f0f7f1;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+.ui-widget {
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+fieldset {
+  color: #f0f7f1;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+div[class='ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle'] {
+  background-color: #07522c;
+  color: #f0f7f1;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.validateTips {
+  color: #07522c;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+/*# sourceMappingURL=style_login.css.map */
