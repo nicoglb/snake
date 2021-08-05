@@ -92,11 +92,6 @@ div#users-contain table th {
   background-color: darkcyan;
 }
 
-.header #user {
-  color: #140b96;
-  font-style: oblique;
-}
-
 .header .navi li ul {
   display: none;
   position: absolute;
@@ -106,18 +101,61 @@ div#users-contain table th {
   display: block;
 }
 
+.header #user {
+  color: #140b96;
+  font-style: oblique;
+}
+
+.header .puntaje {
+  border-radius: 50px;
+  background-color: #b1aaaa;
+  color: black;
+  padding: 0px 6px 0px;
+}
+
+.header .puntaje.score {
+  -webkit-transform: scale(1.4, 1.4);
+          transform: scale(1.4, 1.4);
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  background-color: #f30e6e;
+  font-size: large;
+  color: white;
+  border-radius: 80%;
+}
+
+.header.move {
+  background-color: red;
+  -webkit-transform: scale(3.5, 3.9);
+  -webkit-transform: translate(100px, 100px);
+  transform: translate(100px, 100px);
+}
+
+.header #last, .header #max, .header #reset {
+  padding: 0em 1em 0em;
+}
+
+.swaltext {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+  color: #c72d2d !important;
+}
+
 body {
-  background-image: url(./images/stone-texture.jpg);
-  background-size: 50px 50px;
-  background-repeat: all;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(#cdeccd)), url(./images/fondo7.png);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #cdeccd), url(./images/fondo7.png);
+  background-size: 100%;
 }
 
 body main {
+  padding-top: 100px;
+  padding-right: 450px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 40px 1fr;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template: 40px 1fr / 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template: 1fr / 1fr;
       grid-template-areas: ". tablero .";
 }
 
@@ -125,8 +163,6 @@ body main #container {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: tablero;
-  width: 600px;
-  height: 400px;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: (20px)[15];
@@ -143,10 +179,12 @@ body main #container .casillero {
   width: 20px;
   height: 20px;
   font-size: 10px;
+  border: 1px solid greenyellow;
 }
 
 body main #container .casillero:nth-child(odd) {
-  background-color: greenyellow;
+  background: -webkit-gradient(linear, left top, left bottom, from(#c2b2b2), to(green));
+  background: linear-gradient(#c2b2b2, green);
   color: transparent;
 }
 
@@ -156,17 +194,29 @@ body main #container .casillero:nth-child(even) {
 }
 
 body main #container .casillero.headSnake {
-  background-image: url(./images/head_snake.png);
+  background-image: url(./images/headSnake.png);
   background-size: 20px 20px;
 }
 
 body main #container .casillero.bodySnake {
   background-color: #2f2c79;
+  background: -webkit-gradient(linear, left top, left bottom, from(#2d0652), to(violet));
+  background: linear-gradient(#2d0652, violet);
+}
+
+body main #container .casillero.bordesleft, body main #container .casillero.bordesrigth {
+  color: transparent;
 }
 
 body main #container .casillero.food {
   background-image: url(./images/apple.png);
   background-repeat: no-repeat;
   background-size: 20px 20px;
+  -webkit-transform: rotate(1turn);
+          transform: rotate(1turn);
+  -webkit-transition: -webkit-transform 0.9s ease;
+  transition: -webkit-transform 0.9s ease;
+  transition: transform 0.9s ease;
+  transition: transform 0.9s ease, -webkit-transform 0.9s ease;
 }
 /*# sourceMappingURL=style.css.map */
