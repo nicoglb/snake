@@ -16,7 +16,7 @@ var bordes = [0, 17];
 
 const define_bordes = () => {
 
-   // for (let b = 0; b < 51; b ++) {
+   // for (let b = 0; b < 51; b +17) {
          // container.children[bordes[b]].classList.add('bordes');
     let b=0;
     let c=16;
@@ -62,6 +62,11 @@ let score = 0;
 let choco;
 let chocobl;
 let chocobr;
+
+// Conseguir elemento
+//localStorage.getItem("usuario_logueado");
+
+
 
 const mov = (inc) => {
 
@@ -278,13 +283,18 @@ const reset_game = () => {
 }
 
 const cerrarSesion = () => {
+
     Swal.fire({
         position: 'top-end',
         icon: 'success',
         title: 'Cerrando sesión...',
         showConfirmButton: false,
         timer: 2000
-    });
+    })
+    setTimeout(() => {
+        window.location.href = "./login.html";
+    }, 2000);
+ 
 }
 
 let event_before = 'ArrowRight';
