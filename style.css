@@ -1,3 +1,4 @@
+@charset "UTF-8";
 label,
 input {
   display: block;
@@ -237,5 +238,98 @@ body main #container .casillero.food {
   transition: -webkit-transform 0.9s ease;
   transition: transform 0.9s ease;
   transition: transform 0.9s ease, -webkit-transform 0.9s ease;
+}
+
+#div_form {
+  /* Centrar el formulario en la página */
+  margin-top: 310px;
+  width: 290px;
+  height: 190px;
+  /* Esquema del formulario */
+  padding: 1em;
+  border-radius: 1em;
+}
+
+label {
+  /* Tamaño y alineación uniforme */
+  font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+  display: inline-block !important;
+  font-size: large;
+  text-align: left;
+  color: whitesmoke;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+label[class='label_dialog'] {
+  font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+  display: inline-block !important;
+  font-size: large;
+  text-align: left;
+  color: #04AA6D !important;
+  text-shadow: #04AA6D 0em 0em 0em;
+}
+
+input,
+textarea {
+  /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
+     Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
+  font: 1em sans-serif;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  /* Tamaño uniforme del campo de texto */
+  width: 300px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* Hacer coincidir los bordes del campo del formulario */
+  border: 1px solid #999;
+}
+
+input:focus,
+textarea:focus {
+  /* Destacado adicional para elementos que tienen el cursor */
+  border-color: #000;
+}
+
+textarea {
+  /* Alinear los campos de texto multilínea con sus etiquetas */
+  vertical-align: top;
+  /* Proporcionar espacio para escribir texto */
+  height: 5em;
+}
+
+#dialog-form {
+  color: #f0f7f1;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+.ui-widget {
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+fieldset {
+  color: #f0f7f1;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+div[class='ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle'] {
+  background-color: #07522c;
+  color: #f0f7f1;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.validateTips {
+  color: #07522c;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+button {
+  background-color: #04AA6D  !important;
+  color: #f0f7f1 !important;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+}
+
+.usernameModal {
+  color: #140b96;
+  font-style: oblique;
 }
 /*# sourceMappingURL=style.css.map */

@@ -2,7 +2,7 @@ import { createUser, getUsers, getUsersById } from './snakeApi.js'
 $(function () {
 
   localStorage.removeItem('usuario_nuevo');
-  localStorage.removeItem('usuario_login');
+  localStorage.removeItem('usuario_logueado');
   var dialog, form,
     // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
     emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
@@ -26,7 +26,7 @@ $(function () {
       toast.addEventListener('mouseenter', Swal.stopTimer)
       toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
-  })
+  });
 
   function setUsuario(p_name, p_fullname, p_email, p_pass) {
     localStorage.removeItem('usuario_nuevo');

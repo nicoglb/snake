@@ -59,4 +59,23 @@ const callAPISnake = async (url, parameters, data) => {
     const data = await  res.json();//abro la promesa, y espero que se resuelva en res
     return data;
   }
- export {createUser, getUsers , getUsersById};
+
+const editUser = async (user)=> {
+  const url = "http://localhost:3000/v1/users/update/"+user.username;
+  const parameters = {method: 'PUT', body:user};
+  const res= await callAPISnake(url, parameters,user);
+  const data = await res.json();
+    console.log('data :'+ JSON.stringify(data));
+    return data;
+}
+
+const deleteUser = async (user)=> {
+  const url = "http://localhost:3000/v1/users/delete/:username";
+  const parameters = {method: 'DELETE', body:user.username};
+  const res= await callAPISnake(url, parameters,user.username);
+  const data = await res.json();
+    console.log('data :'+ JSON.stringify(data));
+    return data;
+}
+
+ export {createUser, getUsers , getUsersById, editUser, deleteUser};

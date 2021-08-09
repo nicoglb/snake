@@ -1,6 +1,171 @@
+import { editUser, getUsersById } from './snakeApi.js'
+$(function(){
+
+    var dialog, form,
+ 
+    // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+    emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+    name = $("#name"),
+    fullname = $("#fullname"),
+    email = $("#email"),
+    password = $("#password"),
+    allFields = $([]).add(fullname).add(email).add(password),
+    tips = $(".validateTips");
+     let user_p_mostrar =JSON.parse(localStorage.getItem('usuario_logueado'));;
+     const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      });
+    function setUsuarioEdit(p_name, p_fullname, p_email, p_pass) {
+        localStorage.removeItem('usuario_logueado');
+       let user_edit = {
+          username: p_name,
+          fullname: p_fullname,
+          email: p_email,
+          password: p_pass
+        };
+    
+        localStorage.setItem('usuario_logueado', JSON.stringify(user_edit));
+        return user_edit;
+      }
+  function updateTips( t ) {
+    tips
+      .text( t )
+      .addClass( "ui-state-highlight" );
+    setTimeout(function() {
+      tips.removeClass( "ui-state-highlight", 1500 );
+    }, 500 );
+  }
+
+  function checkLength( o, n, min, max ) {
+    if (o.val().length > max || o.val().length < min) {
+        o.addClass("ui-state-error");
+        updateTips("El tamaño de " + n + " debe estar comprendido entre " +
+          min + " y " + max + " digitos");
+        return false;
+      } else {
+        return true;
+      }
+  }
+
+  function checkRegexp( o, regexp, n ) {
+    if ( !( regexp.test( o.val() ) ) ) {
+      o.addClass( "ui-state-error" );
+      updateTips( n );
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function addUser() {
+    var valid = true;
+    allFields.removeClass( "ui-state-error" );
+    valid = valid && checkLength(fullname, "fullname", 3, 16);
+    valid = valid && checkLength(email, "email", 6, 80);
+    valid = valid && checkLength(password, "password", 5, 16);
+
+    valid = valid && checkRegexp(email, emailRegex, "Email Incorrecto. Ejemplo: player1@snakeApi.com");
+    valid = valid && checkRegexp(password, /^([0-9a-zA-Z])+$/, "El campo password Solo permite: a-z 0-9");
+
+    if ( valid ) {
+let user = setUsuarioEdit(name.val(), fullname.val(), email.val(), password.val());
+        (async () => {
+            try{
+            const result = await editUser({
+              username: user.username,
+              fullname: user.fullname,
+              email: user.email,
+              password: user.password
+            });
+            Toast.fire({
+              icon: 'success',
+              title: 'Se modificó correctamente tu usuario ' + user.username + '!',
+             
+            });
+      
+          }
+          catch (error){
+        console.log (error);
+            Toast.fire({
+              icon: 'error',
+              title: 'Ocurrio un error al intentar modificar tu usuario'
+              
+            });
+          }
+    
+          })();
+    //  $( "#users tbody" ).append( "<tr>" +
+        
+    //    "<td>" + email.val() + "</td>" +
+    //    "<td>" + password.val() + "</td>" +
+    //  "</tr>" );
+      dialog.dialog( "close" );
+    }
+    return valid;
+  }
+
+  dialog = $( "#dialog-form" ).dialog({
+    
+    autoOpen: false,
+    height: 400,
+    width: 350,
+    modal: true,
+    buttons: {
+      "Guardar Cambios": addUser,
+      Cancel: function() {
+        dialog.dialog( "close" );
+      }
+    },
+    close: function() {
+      form[ 0 ].reset();
+      allFields.removeClass( "ui-state-error" );
+    }
+  });
+
+  form = dialog.find( "form" ).on( "submit", function( event ) {
+    event.preventDefault();
+    addUser();
+  });
+
+  function traerUserlogueado(){
+    const traer_resu = (async () => {
+        try {
+          const result = await getUsersById(user_p_mostrar.username);
+          console.log(result);
+          name.val(result.username); 
+      fullname.val(result.fullname);
+      email.val(result.email);
+      password.val(result.password);
+          
+        }
+        catch (error) { 
+          console.log(error);
+        }
+      })();
+      
+    }
+  $( "#editarCuenta" ).on( "click", function() {
+      traerUserlogueado();
+    dialog.dialog( "open" );
+  });
+} );
+
+
+
+
 let container = document.getElementById('container');
 let body = document.getElementsByTagName('body')[0];
 let header = document.getElementById('score');
+let user_p_mostrar = JSON.parse(localStorage.getItem('usuario_logueado'));
+document.getElementById('user').innerHTML=user_p_mostrar.username;
 
 //header.addEventListener('transitionend', onTransitionEnd, false);
 
@@ -64,7 +229,7 @@ let chocobl;
 let chocobr;
 
 // Conseguir elemento
-//localStorage.getItem("usuario_logueado");
+
 
 
 
