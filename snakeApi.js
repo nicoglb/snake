@@ -70,9 +70,9 @@ const editUser = async (user)=> {
 }
 
 const deleteUser = async (user)=> {
-  const url = "http://localhost:3000/v1/users/delete/:username";
-  const parameters = {method: 'DELETE', body:user.username};
-  const res= await callAPISnake(url, parameters,user.username);
+  const url = "http://localhost:3000/v1/users/delete/"+user.username;
+  const parameters = {method: 'DELETE', body:user};
+  const res= await callAPISnake(url, parameters,user);
   const data = await res.json();
     console.log('data :'+ JSON.stringify(data));
     return data;

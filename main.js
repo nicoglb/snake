@@ -156,6 +156,21 @@ let user = setUsuarioEdit(name.val(), fullname.val(), email.val(), password.val(
       traerUserlogueado();
     dialog.dialog( "open" );
   });
+
+  $( "#cerrarSesion" ).on( "click", function() {
+
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Cerrando sesión...',
+        showConfirmButton: false,
+        timer: 2000
+    })
+    setTimeout(() => {
+        window.location.href = "./login.html";
+    }, 2000);
+ 
+});
 } );
 
 
@@ -447,20 +462,7 @@ const reset_game = () => {
     document.getElementById('score').innerHTML = score;
 }
 
-const cerrarSesion = () => {
 
-    Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Cerrando sesión...',
-        showConfirmButton: false,
-        timer: 2000
-    })
-    setTimeout(() => {
-        window.location.href = "./login.html";
-    }, 2000);
- 
-}
 
 let event_before = 'ArrowRight';
 
