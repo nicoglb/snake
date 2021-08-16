@@ -74,7 +74,7 @@ div#users-contain table th {
 
 .header {
   color: black;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 16px;
   height: 60px;
 }
@@ -90,7 +90,7 @@ div#users-contain table th {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
 }
 
 .header .navi > ul li {
@@ -153,12 +153,14 @@ div#users-contain table th {
   transform: translate(100px, 100px);
 }
 
-.header #last, .header #max, .header #reset {
+.header #last,
+.header #max,
+.header #reset {
   padding: 0em 1em 0em;
 }
 
 .swaltext {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
   color: #c72d2d !important;
 }
 
@@ -198,19 +200,17 @@ body main #container {
 body main #container .casillero {
   width: 20px;
   height: 20px;
-  font-size: 10px;
+  font-size: 0px;
   border: 1px solid greenyellow;
 }
 
 body main #container .casillero:nth-child(odd) {
   background: -webkit-gradient(linear, left top, left bottom, from(#c2b2b2), to(green));
   background: linear-gradient(#c2b2b2, green);
-  color: transparent;
 }
 
 body main #container .casillero:nth-child(even) {
   background-color: yellowgreen;
-  color: transparent;
 }
 
 body main #container .casillero.headSnake {
@@ -224,7 +224,7 @@ body main #container .casillero.bodySnake {
   background: linear-gradient(#2d0652, violet);
 }
 
-body main #container .casillero.bordesleft, body main #container .casillero.bordesrigth {
+body main #container .casillero.bordesLeft, body main #container .casillero.bordesRight {
   color: transparent;
 }
 
@@ -252,7 +252,7 @@ body main #container .casillero.food {
 
 label {
   /* Tamaño y alineación uniforme */
-  font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+  font-family: Comic Sans MS, Snap ITC, Matura MT Script Capitals, Helvetica, sans-serif;
   display: inline-block !important;
   font-size: large;
   text-align: left;
@@ -260,13 +260,13 @@ label {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
 
-label[class='label_dialog'] {
-  font-family: Comic Sans MS, Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif;
+label[class="label_dialog"] {
+  font-family: Comic Sans MS, Snap ITC, Matura MT Script Capitals, Helvetica, sans-serif;
   display: inline-block !important;
   font-size: large;
   text-align: left;
-  color: #04AA6D !important;
-  text-shadow: #04AA6D 0em 0em 0em;
+  color: #04aa6d !important;
+  text-shadow: #04aa6d 0em 0em 0em;
 }
 
 input,
@@ -274,13 +274,17 @@ textarea {
   /* Para asegurarse de que todos los campos de texto tienen la misma configuración de letra
      Por defecto, las áreas de texto tienen un tipo de letra monoespaciada */
   font: 1em sans-serif;
-  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS, Snap ITC, Matura MT Script Capitals, Helvetica, sans-serif !important;
   /* Tamaño uniforme del campo de texto */
   width: 300px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   /* Hacer coincidir los bordes del campo del formulario */
   border: 1px solid #999;
+}
+
+input[type="checkbox"] {
+  display: none;
 }
 
 input:focus,
@@ -298,19 +302,19 @@ textarea {
 
 #dialog-form {
   color: #f0f7f1;
-  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS, Snap ITC, Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 
 .ui-widget {
-  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS, Snap ITC, Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 
 fieldset {
   color: #f0f7f1;
-  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS, Snap ITC, Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 
-div[class='ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle'] {
+div[class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"] {
   background-color: #07522c;
   color: #f0f7f1;
   text-shadow: black 0.1em 0.1em 0.2em;
@@ -318,14 +322,14 @@ div[class='ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix 
 
 .validateTips {
   color: #07522c;
-  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS, Snap ITC, Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 
 button {
-  background-color: #04AA6D  !important;
+  background-color: #04aa6d !important;
   color: #f0f7f1 !important;
   text-shadow: black 0.1em 0.1em 0.2em;
-  font-family: Comic Sans MS,Snap ITC,Matura MT Script Capitals, Helvetica, sans-serif !important;
+  font-family: Comic Sans MS, Snap ITC, Matura MT Script Capitals, Helvetica, sans-serif !important;
 }
 
 .usernameModal {
