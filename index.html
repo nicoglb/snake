@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     label,
     input {
@@ -70,26 +71,47 @@
     <div class="navi">
       <ul>
         <li><img id="logo" src="images/logo.png"></li>
-        <li><a style="display:flex" href="#">Score:&nbsp <div id="score" class="puntaje"> 0 </div></a></li>
-        <li id="reset"><a href="#" onclick="reset_game()">Reset</a></li>
-        <li id="max"><a style="display:flex" href="#" onclick="">Max Score &nbsp <div id="maxscore" class="puntaje"> 0
-            </div></a></li>
-        <li id="last"><a style="display:flex" href="#" onclick="">Last Score &nbsp <div id="lastscore" class="puntaje">
-              0 </div></a></li>
+        <li id="max"><a style="display:flex" id="maxScore" href="#">Max Score &nbsp <div id="maximoscore" class="puntaje"> 0
+        </div></a></li>
+        <li id="last"><a style="display:flex" id="lastScore" href="#">Last Score &nbsp <div id="ultimoscore" class="puntaje">
+          0 </div></a></li>
+        <li id="scor"><a style="display:flex" href="#">Score: &nbsp <div id="score" class="puntaje">0</div></a></li>
+        <li id="reset"><a id="res" >RESET</a></li>
+        <li id="ranking"><a id="ran" style="display:flex">RANKING!! &nbsp </a></li>
         <li style="float:right">
           <a style="display:flex" href="#">User Conected: &nbsp
-            <div id="user"> ''</div>
+            <div id="user"> &nbsp</div>
           </a>
           <ul>
             <li><a href="#" id="cerrarSesion">Cerrar Sesion</a></li>
-            <li><a href="#" id="editarCuenta">Editar Cuenta</a></li>
+            <li><a href="#" id="editarCuenta">Editar Usuario</a></li>
           </ul>
         </li>
       </ul>
     </div>
   </header>
 
+
+  <div id="rank" class="tablaranking w3-hide w3-container w3-black">
+    <h1 class="neon">.. RANKING ..</h1>
+    <div id="datos" style="display:inline-block" >
+     <!-- <p id="user_rank" class="neon1">Usuario </p>
+      <p class="neon1">&nbsp __________ &nbsp</p>
+      <p id="score_rank" class="neon1"> Puntaje</p> -->
+    </div>
+   
+  </div>
+
+
+  <!-- w3-hide w3-container w3-light-grey" <article class="tablaranking">
+    <h1 class="neon">. RANKING  .</h1>
+    <p class="neon2">Usuario</p>
+    <p class="neon2">Puntaje</p>
+          
+  </article>-->
   <main>
+
+
     <div id="container" class="container">
 
       <!-- div*20.casillero{$@0} -->
@@ -369,8 +391,9 @@
       <form>
         <fieldset>
           <label class="label_dialog" for="name">User Name</label>
-          <input type="text" name="name" id="name" placeholder="Username" class="text ui-widget-content ui-corner-all" disabled> <!-- readonly="readonly"   -->  
-            <label class="label_dialog" for="fullname">Full Name</label>
+          <input type="text" name="name" id="name" placeholder="Username" class="text ui-widget-content ui-corner-all"
+            disabled> <!-- readonly="readonly"   -->
+          <label class="label_dialog" for="fullname">Full Name</label>
           <input type="text" name="fullname" id="fullname" placeholder="Fullname"
             class="text ui-widget-content ui-corner-all">
           <label class="label_dialog" for="email">Email</label>
@@ -393,7 +416,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="./snakeApi.js"></script>
-  <script  type="module" src="./main.js"></script>
+  <script type="module" src="./main.js"></script>
 </body>
 
 </html>

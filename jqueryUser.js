@@ -106,7 +106,7 @@ $(function () {
   
       }
       catch (error){
-
+        console.error(error);
         Toast.fire({
           icon: 'error',
           title: 'Ocurrio un error, posiblemente ya exista un jugador con el username'

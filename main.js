@@ -1,4 +1,5 @@
-import { editUser, getUsersById } from './snakeApi.js'
+import { editUser, getUsersById, getMaxUserScore, getLastUserScore, saveScoreUser, getRankingScore } from './snakeApi.js'
+
 $(function () {
 
   var dialog, form,
@@ -135,6 +136,7 @@ $(function () {
     addUser();
   });
 
+  //OBTENER EL USUAERIO LOGUEADO
   function traerUserlogueado() {
     const traer_resu = (async () => {
       try {
@@ -152,11 +154,62 @@ $(function () {
     })();
 
   }
+  //MOSTRAR EL MAXIMO SCORE POR USERNAME
+  (async () => {
+    try {
+      const maxScore = await getMaxUserScore(user_p_mostrar.username);
+      console.log('max Score desde main: ' + maxScore);
+      if (maxScore) {
+        document.getElementById('maximoscore').innerHTML = maxScore;
+      }
+      else {
+        document.getElementById('maximoscore').innerHTML = '0';
+      }
+    }
+    catch (error) {
+      console.log(error);
+    }
+  })();
+
+  //MOSTRAR EL ULTIMO SCORE POR USERNAME
+  (async () => {
+    try {
+      const lastScore = await getLastUserScore(user_p_mostrar.username);
+      console.log('last Score desde main: ' + lastScore.score);
+      if (lastScore) {
+        document.getElementById('ultimoscore').innerHTML = lastScore.score;
+      }
+      else {
+        document.getElementById('ultimoscore').innerHTML = '0';
+      }
+    }
+    catch (error) {
+      console.log(error);
+    }
+  })();
+
+
+
+  (async () => {
+    try {
+
+      const userRanking = await getRankingScore();
+      localStorage.setItem('listRanking', userRanking);
+
+
+    }
+    catch (error) {
+      console.log(error);
+    };
+  })();
+
+  //EDITAR LOS DATOS PARA UN USUARIO
   $("#editarCuenta").on("click", function () {
     traerUserlogueado();
     dialog.dialog("open");
   });
 
+  //CERRAR SESION
   $("#cerrarSesion").on("click", function () {
 
     Swal.fire({
@@ -171,6 +224,15 @@ $(function () {
     }, 2000);
 
   });
+
+  $("#reset").on("click", function () {
+    reset_game();
+  });
+
+  $("#ranking").on("click", function () {
+    ver_ranking();
+  });
+
 });
 
 
@@ -218,48 +280,37 @@ const define_bordes = () => {
 
 define_bordes();
 
+
+
+
 let comi;
 let score = 0;
+let user;
 let choco;
 let chocobl;
 let chocobr;
 
 
-let timeInterval = 500;
+let timeInterval = 400;
 let interv;
 
 
 const mov = (inc) => {
 
   let remove;
-  // for (let b = 0; b < 52; b+17) {
-  //   console.log("borde" +b);
-  // }
 
   for (let index = 0; index < snake.length; index++) {
 
     //index=0; //esto si saco el for y el if
     if (index === 0) {
-      console.log("index: " + index)
-      console.log("index snake " + snake[index]);
       //cabeza
       container.children[snake[index]].classList.toggle('headSnake');
       //agrego al principio del array la nueva cabeza
       snake.unshift(parseInt(container.children[snake[index]].textContent) + inc);
-
-      //console.log(snake[index]);
-      //avanzo en los casilleros
-      /* if (!container.children[snake[index]]) {
-        console.log("entro");
-        its_border();
-        break;
-      } */
-
       container.children[snake[index]].classList.toggle('headSnake');
-
       choco = its_border_lat(snake[index]);
-      console.log("choco left funcion: " + chocobl);
-      console.log("choco right funcion: " + chocobr);
+      // console.log("choco left funcion: " + chocobl);
+      // console.log("choco right funcion: " + chocobr);
 
       if (its_me(snake[index]))
         break;
@@ -285,18 +336,6 @@ const mov = (inc) => {
 
       break;
     }
-  }
-
-}
-
-const delete_no_comi = () => {
-
-  if (!comi) {
-    remove = snake.pop();
-    console.log("pop" + remove)
-    container.children[remove].classList.toggle('bodySnake');
-    header.classList.toggle('score');
-
   }
 
 }
@@ -330,6 +369,42 @@ function re_load() {
   });
 }
 
+
+
+const ver_ranking = async () => {
+  const x = document.getElementById('rank');
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+
+    console.log('ranking desde main: ' + localStorage.getItem('listRanking'));
+    const userRanking = JSON.parse(localStorage.getItem('listRanking'));
+
+    for (var i of userRanking) {
+      //let div = document.createElement('div');
+      //div.setAttribute("id", "listRank");
+
+      let p = document.createElement('p');
+      p.textContent = i.username + '________' + i.score;
+      p.className = 'neon1';
+
+      let div2 = document.getElementById('datos');
+      div2.appendChild(p);
+    }
+
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+    let div = document.getElementById('datos');
+
+    if (div !== null) {
+      while (div.hasChildNodes()) {
+        div.removeChild(div.lastChild);
+      }
+    }
+  }
+};
+
+
+
 const its_me = (head) => {
   //funcion que se fija si choco conmigo mismo
 
@@ -339,8 +414,13 @@ const its_me = (head) => {
     Swal.fire({
       icon: 'error',
       title: 'Game Over...',
-      text: 'Tendrás suerte en la próxima!',
-      footer: '<a href="">Ver mis puntajes</a>',
+      text: 'Te chocaste!',
+      showConfirmButton: false,
+      timer: 1700,
+      imageUrl: './images/headSnakeChoque.png',
+      imageWidth: 100,
+      imageHeight: 100,
+      imageAlt: 'Custom image',
       customClass: {
         title: 'swaltext'
       }
@@ -357,14 +437,14 @@ const its_border_lat = (head) => {
   chocobr = false;
 
   if (container.children[head].classList.contains('bordesLeft') || container.children[head].classList.contains('bordesRight')) {
-    console.log("choco con bordes");
+    //console.log("choco con bordes");
     if (container.children[head].classList.contains('bordesLeft')) {
-      console.log("choco con borde izquierdo");
+      // console.log("choco con borde izquierdo");
       chocobl = true;
       return true;
     }
     else {
-      console.log("choco con borde derecho");
+      // console.log("choco con borde derecho");
       chocobr = true;
       return true;
     }
@@ -399,7 +479,9 @@ const random_food = () => {
   } while (snake.includes(location));
 
   container.children[location].classList.toggle('food');
+
 }
+
 
 const add_score = () => {
   //funcion que acumula el puntaje en 10 cada vez que come
@@ -412,12 +494,13 @@ const add_score = () => {
 
 }
 
+
 const reset_game = () => {
 
   // for (i of snake) {
   for (let i = 0; i < snake.length; i++) {
 
-    console.log("snake a borrar: " + snake);
+    // console.log("snake a borrar: " + snake);
     //   console.log("snake children: "+ i);
     if (container.children[snake[i]].classList.contains('headSnake')) {
       container.children[snake[i]].classList.toggle('headSnake');
@@ -434,18 +517,67 @@ const reset_game = () => {
     }
   }
 
-  console.log("antes de setearlo :" + snake)
 
   container.children[122].classList.add('headSnake');
   container.children[121].classList.add('bodySnake');
 
   snake = [122, 121];
   event_before = 'ArrowRight';
-
+  //guardar el puntaje
+  saveScore();
+  const x = document.getElementById('rank');
+  x.className = x.className.replace(" w3-show", "");
   score = 0;
-  console.log("snake: " + snake);
   document.getElementById('score').innerHTML = score;
+
 }
+
+const saveScore = () => {
+  (async () => {
+    try {
+      const time = Date.now();
+      const date = new Date(time);
+      user = {
+        username: user_p_mostrar.username,
+        date: date,
+        score: score,
+      }
+      const saveScore = await saveScoreUser(user);
+
+      const maxScore = await getMaxUserScore(user_p_mostrar.username);
+      console.log('Score max desde main: ' + maxScore);
+      if (maxScore) {
+        document.getElementById('maximoscore').innerHTML = maxScore;
+      
+      }
+      else {
+        document.getElementById('maximoscore').innerHTML = '0';
+      }
+
+      const lastScore = await getLastUserScore(user_p_mostrar.username);
+      console.log('Score last desde main: ' + lastScore.score);
+      if (lastScore) {
+        document.getElementById('ultimoscore').innerHTML = lastScore.score;
+      }
+      else {
+        document.getElementById('ultimoscore').innerHTML = '0';
+      }
+
+      const userRanking = await getRankingScore();
+      localStorage.setItem('listRanking', userRanking);
+
+      const ranking = localStorage.getItem('listRanking');
+      console.log('ranking desde save: ' + ranking);
+
+
+      //return true;
+    }
+    catch (error) {
+      console.log(error);
+    }
+  })();
+}
+
 
 const girarCabeza = (event) => {
   let cabeza = document.querySelector('.headSnake')
@@ -509,10 +641,10 @@ const chocare = (event) => {
   }
 
 }
-
 let event_before = 'ArrowRight';
+body.addEventListener('keyup', (event) => {
 
-const eventController = (event) => {
+  //const eventController = (event) => {
 
   if (event.key === 'ArrowLeft') {
     if (choco) {    //está en alguno de los dos bordes
@@ -522,15 +654,23 @@ const eventController = (event) => {
     }
 
     if (event_before !== 'ArrowRight' /* && !chocare(event) */) {
+      //   let cabeza = document.querySelector('.headSnake')
+      //  // console.log('con trans: '+cabeza);
+      //  cabeza.style.transform = 'initial';
+      //console.log('sin trans: '+cabeza);
       mov(-1);
       girarCabeza(event)
       event_before = event.key;
+
     }
 
   }
   if (event.key === 'ArrowUp') {
     //console.log('Nos movemos a arriba');
     if (event_before !== 'ArrowDown' && !chocare(event)) {
+      let cabeza = document.querySelector('.headSnake')
+      // console.log('con trans: '+cabeza);
+      cabeza.style.transform = 'initial';
       mov(-17);
       girarCabeza(event)
       event_before = event.key;
@@ -546,6 +686,9 @@ const eventController = (event) => {
       }
     }
     if (event_before !== 'ArrowLeft' /*&& !chocare(event)*/) {
+      let cabeza = document.querySelector('.headSnake')
+      // console.log('con trans: '+cabeza);
+      cabeza.style.transform = 'initial';
       mov(1);
       girarCabeza(event)
       event_before = event.key;
@@ -559,6 +702,9 @@ const eventController = (event) => {
     //console.log(event_before);
 
     if (event_before !== 'ArrowUp' && !chocare(event)) {
+      let cabeza = document.querySelector('.headSnake')
+      // console.log('con trans: '+cabeza);
+      cabeza.style.transform = 'initial';
       mov(17);
       girarCabeza(event)
       event_before = event.key;
@@ -567,14 +713,14 @@ const eventController = (event) => {
   }
 
 
-}
+  //}
 
-body.addEventListener('keyup', (event) => {
+
   //console.log('keyup');
   //console.log(event.key);
   //random_food();
-  clearInterval(interv);
-  interv = setInterval(eventController, timeInterval, event);
+  //clearInterval(interv);
+  // interv = setInterval(eventController, timeInterval, event);
 
 
   //console.log(container);

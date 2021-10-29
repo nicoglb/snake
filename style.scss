@@ -13,7 +13,7 @@
   // justify-content: space-between;
 
   #logo {
-    width: 55px;
+    width: 80px;
     height: 50px;
     padding: 0px 1em 0px;
   }
@@ -56,6 +56,7 @@
   #user {
     //padding-right: 1.5em;
     color: rgb(20, 11, 150);
+    font-size: 17px;
     font-style: oblique;
   }
 
@@ -83,16 +84,57 @@
   }
 
   #last,
-  #max,
+  #scor,
   #reset {
     padding: 0em 1em 0em;
   }
+
+  #res{
+    color: rgb(22, 8, 143);
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  #ran{
+    cursor: pointer;
+  }
+
 }
 
 .swaltext {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
   color: rgb(199, 45, 45) !important;
 }
+
+
+.tablaranking {
+  border: 2px solid white;
+  box-shadow: inset 0 0 5px red, 0 0 10px red;
+  border-radius: 60px;
+  max-width: 350px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  color: white;
+ // border-collapse: collapse;
+ //  width: 100%;
+
+}
+
+.neon{
+  font-family: cursive;
+  margin:0;
+  font-size:30px;
+  text-shadow: 0 0 5px red, 0 0 15px red, 0 0 30px red, 0 0 50px red;
+}
+
+.neon1{
+  font-family: cursive;
+  margin:0;
+  font-size:18px;
+  text-shadow: 0 0 5px yellow, 0 0 15px yellow, 0 0 30px yellow, 0 0 50px yellow;
+}
+
 
 body {
   //height: 600px;
@@ -133,13 +175,13 @@ body {
           // background-image: url(./images/casillero.jpg);
           // background-size: 20px 20px;
           //color: transparent; //blue;
-          //color: blue;
+          color: blue;
         }
         &:nth-child(even) {
           // background: linear-gradient(rgba(255,255,255,0),yellowgreen);
           background-color: yellowgreen;
           //color: transparent; //black;
-          // color: black
+           color: black
         }
 
         &.headSnake {
@@ -163,8 +205,8 @@ body {
           background-image: url(./images/apple.png);
           background-repeat: no-repeat;
           background-size: 20px 20px;
-          transform: rotate(1turn);
-          transition: transform 0.9s ease;
+          transform: rotate(1turn) !important;
+          transition: transform 0.9s ease !important;
         }
       }
     }

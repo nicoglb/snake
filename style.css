@@ -80,7 +80,7 @@ div#users-contain table th {
 }
 
 .header #logo {
-  width: 55px;
+  width: 80px;
   height: 50px;
   padding: 0px 1em 0px;
 }
@@ -123,6 +123,7 @@ div#users-contain table th {
 
 .header #user {
   color: #140b96;
+  font-size: 17px;
   font-style: oblique;
 }
 
@@ -154,14 +155,50 @@ div#users-contain table th {
 }
 
 .header #last,
-.header #max,
+.header #scor,
 .header #reset {
   padding: 0em 1em 0em;
+}
+
+.header #res {
+  color: #16088f;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.header #ran {
+  cursor: pointer;
 }
 
 .swaltext {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
   color: #c72d2d !important;
+}
+
+.tablaranking {
+  border: 2px solid white;
+  -webkit-box-shadow: inset 0 0 5px red, 0 0 10px red;
+          box-shadow: inset 0 0 5px red, 0 0 10px red;
+  border-radius: 60px;
+  max-width: 350px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.neon {
+  font-family: cursive;
+  margin: 0;
+  font-size: 30px;
+  text-shadow: 0 0 5px red, 0 0 15px red, 0 0 30px red, 0 0 50px red;
+}
+
+.neon1 {
+  font-family: cursive;
+  margin: 0;
+  font-size: 18px;
+  text-shadow: 0 0 5px yellow, 0 0 15px yellow, 0 0 30px yellow, 0 0 50px yellow;
 }
 
 body {
@@ -207,10 +244,12 @@ body main #container .casillero {
 body main #container .casillero:nth-child(odd) {
   background: -webkit-gradient(linear, left top, left bottom, from(#c2b2b2), to(green));
   background: linear-gradient(#c2b2b2, green);
+  color: blue;
 }
 
 body main #container .casillero:nth-child(even) {
   background-color: yellowgreen;
+  color: black;
 }
 
 body main #container .casillero.headSnake {
@@ -232,12 +271,12 @@ body main #container .casillero.food {
   background-image: url(./images/apple.png);
   background-repeat: no-repeat;
   background-size: 20px 20px;
-  -webkit-transform: rotate(1turn);
-          transform: rotate(1turn);
-  -webkit-transition: -webkit-transform 0.9s ease;
-  transition: -webkit-transform 0.9s ease;
-  transition: transform 0.9s ease;
-  transition: transform 0.9s ease, -webkit-transform 0.9s ease;
+  -webkit-transform: rotate(1turn) !important;
+          transform: rotate(1turn) !important;
+  -webkit-transition: -webkit-transform 0.9s ease !important;
+  transition: -webkit-transform 0.9s ease !important;
+  transition: transform 0.9s ease !important;
+  transition: transform 0.9s ease, -webkit-transform 0.9s ease !important;
 }
 
 #div_form {
